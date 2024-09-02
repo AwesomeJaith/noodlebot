@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Difference</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="diff-title">Difference</div>
+        <div class="diff-header-container">
+            <div class="diff-header-before">
+                <div class="diff-svg-container">
+                    <img src="icons/minus-sign.svg" class="minus-sign" alt="minus sign" />
+                    <p class="bold red">1 removal</p> <!-- dynamically generated -->
+                </div>
+                <p class="bold">1 line</p> <!-- dynamically generated -->
+            </div>
+            <div class="diff-header-after">
+                <div class="diff-svg-container">
+                    <img src="icons/plus-sign.svg" class="plus-sign" alt="plus sign" />
+                    <p class="bold green">1 addition</p> <!-- dynamically generated -->
+                </div>
+                <p class="bold">1 line</p> <!-- dynamically generated -->
+            </div>
+        </div>
+        <div class="diff-body-container">
+            <div class="diff-body">
+                <div class="diff-body-before">
+                    <div class="diff-body-text removal" id="first">
+                        <div class="line-number">
+                            1
+                        </div> <!-- dynamically generated -->
+                        <div>
+                            I can make stuff blink and <mark class="deletion">need</mark> with arduino.
+                        </div> <!-- dynamically generated -->
+                    </div>
+                    <div class="diff-body-text">
+                        <div class="line-number">
+                            2
+                        </div> <!-- dynamically generated -->
+                        <div>
+                            I can make stuff blink and <mark class="deletion">need</mark> with arduino. I can make stuff
+                            blink and <mark class="deletion">need</mark> with arduino.
+                        </div> <!-- dynamically generated -->
+                    </div>
+                    <div class="diff-body-text" id="last">
+                        <div class="line-number">
+
+                        </div> <!-- dynamically generated -->
+                        <div>
+                            I can make stuff blink and <mark class="deletion">need</mark> with arduino.
+                        </div> <!-- dynamically generated -->
+                    </div>
+                </div>
+                <div class="diff-body-after">
+                    <div class="diff-body-text addition" id="first">
+                        <div class="line-number">
+                            1
+                        </div> <!-- dynamically generated -->
+                        <div>
+                            I can make stuff blink and <mark class="insertion">beep</mark> with arduino.
+                        </div> <!-- dynamically generated -->
+                    </div>
+                    <div class="diff-body-text" id="last">
+                        <div class="line-number">
+                            2
+                        </div> <!-- dynamically generated -->
+                        <div>
+                            I can make stuff blink and <mark class="insertion">beep</mark> with arduino.
+                        </div> <!-- dynamically generated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
