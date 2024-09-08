@@ -41,4 +41,4 @@ async function captureHTMLFile(containerSelector, outputPath) {
 }
 
 // Example usage
-captureHTMLFile("div.container", "test_page.png");
+//captureHTMLFile("div.container", "test_page.png");
