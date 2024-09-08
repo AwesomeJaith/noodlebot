@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const path = require("path");
 
 async function captureHTMLFile(containerSelector, outputPath) {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: "shell" });
   const page = await browser.newPage();
 
   // Set the viewport width to 1024 pixels and height to 0 initially
