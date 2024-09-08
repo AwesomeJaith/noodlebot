@@ -1,9 +1,5 @@
 function generateDiff(str1, str2) {}
 
-function ReverseString(str) {
-  return str.split("").reverse().join("");
-}
-
 function findLCS(str1, str2) {
   const m = str1.length;
   const n = str2.length;
@@ -20,14 +16,14 @@ function findLCS(str1, str2) {
     }
   }
 
-  let str = "";
+  let str = [];
 
   let i = m;
   let j = n;
 
   while (i > 0 && j > 0) {
     if (str1[i - 1] == str2[j - 1]) {
-      str += str1[i - 1];
+      str.push(str1[i - 1]);
       i--;
       j--;
     } else {
@@ -38,7 +34,7 @@ function findLCS(str1, str2) {
       }
     }
   }
-  return ReverseString(str);
+  return str.reverse();
 }
 
 function findChange(string, subsequence) {
