@@ -37,27 +37,27 @@ function findLCS(str1, str2) {
   return str.reverse();
 }
 
-function findChange(string, subsequence) {
+function findChange(string, subsequence, symbol = "±") {
   let change = [];
 
-  let i = string.length;
-  let j = subsequence.length;
+  let i = string.length - 1;
+  let j = subsequence.length - 1;
 
-  while (i > 0 && j > 0) {
-    if (string[i] === subsequence[j]) {
-      i--;
+  while (i >= 0) {
+    if (j >= 0 && string[i] === subsequence[j]) {
+      change.push(string[i]);
       j--;
     } else {
-      change.push(string[i]);
-      i--;
+      change.push(symbol + string[i]);
     }
+    i--;
   }
 
   return change.reverse();
 }
 
-testStr1 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
-
+// Test strings
+testStr1 = `Diggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
 testStr2 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later", that's how you get reliant on megapixels`;
 
 const subsequence = findLCS(testStr1, testStr2);
@@ -65,10 +65,10 @@ console.log(subsequence);
 
 // Deleted characters test
 console.log("\nThe following characters were deleted:");
-deleted = findChange(testStr1, subsequence);
+deleted = findChange(testStr1, subsequence, "-");
 console.log(deleted);
 
 // Inserted characters test
 console.log("\nThe following characters were inserted:");
-inserted = findChange(testStr2, subsequence);
+inserted = findChange(testStr2, subsequence, "+");
 console.log(inserted);
