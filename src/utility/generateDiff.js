@@ -1,4 +1,10 @@
-function generateDiff(str1, str2) {}
+function generateDiff(str1, str2) {
+  const subsequence = findLCS(str1, str2);
+  const deletions = findChange(str1, subsequence, "-");
+  const insertions = findChange(str2, subsequence, "+");
+
+  return { deletions: deletions, insertions: insertions };
+}
 
 function findLCS(str1, str2) {
   const m = str1.length;
@@ -37,18 +43,18 @@ function findLCS(str1, str2) {
   return str.reverse();
 }
 
-function findChange(string, subsequence, symbol = "±") {
+function findChange(str, subsequence, symbol = "±") {
   let change = [];
 
-  let i = string.length - 1;
+  let i = str.length - 1;
   let j = subsequence.length - 1;
 
   while (i >= 0) {
-    if (j >= 0 && string[i] === subsequence[j]) {
-      change.push(string[i]);
+    if (j >= 0 && str[i] === subsequence[j]) {
+      change.push(str[i]);
       j--;
     } else {
-      change.push(symbol + string[i]);
+      change.push(symbol + str[i]);
     }
     i--;
   }
@@ -60,15 +66,5 @@ function findChange(string, subsequence, symbol = "±") {
 testStr1 = `Diggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
 testStr2 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later", that's how you get reliant on megapixels`;
 
-const subsequence = findLCS(testStr1, testStr2);
-console.log(subsequence);
-
-// Deleted characters test
-console.log("\nThe following characters were deleted:");
-deleted = findChange(testStr1, subsequence, "-");
-console.log(deleted);
-
-// Inserted characters test
-console.log("\nThe following characters were inserted:");
-inserted = findChange(testStr2, subsequence, "+");
-console.log(inserted);
+const diff = generateDiff(testStr1, testStr2);
+console.log(diff);
