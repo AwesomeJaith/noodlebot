@@ -56,28 +56,19 @@ function findChange(string, subsequence) {
   return change.reverse();
 }
 
-testStr1 = `Title: Career Prep: Wow to Do an Effective Job Search
-Description: Embark on your career journey with confidence by understanding the fundamentals of crafting a winning resume and utilizing tools like LinkedIn, Handshake, and VMock to find the perfect job or internship opportunity for you.
-Time: 7:30 PM MST to 8:30 PM MST`;
+testStr1 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
 
-testStr2 = `Title: Career Prep: How to Do an Effective Job Search
-Description:
-Embark on your career journey with confidence by understanding the fundamentals of crafting a winning resume and utilizing tools like LinkedIn, Handshake, and VMock to find the perfect job or internship opportunity for you.
-Time: 7:30 PM MST to 8:30 PM MST`;
+testStr2 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later", that's how you get reliant on megapixels`;
 
 const subsequence = findLCS(testStr1, testStr2);
 console.log(subsequence);
 
 // Deleted characters test
-console.log("\nThe following strings were deleted:");
+console.log("\nThe following characters were deleted:");
 deleted = findChange(testStr1, subsequence);
-for (let i = 0; i < deleted.length; i++) {
-  console.log(deleted[i]);
-}
+console.log(deleted);
 
 // Inserted characters test
-console.log("\nThe following strings were inserted:");
+console.log("\nThe following characters were inserted:");
 inserted = findChange(testStr2, subsequence);
-for (let i = 0; i < inserted.length; i++) {
-  console.log(inserted[i]);
-}
+console.log(inserted);
