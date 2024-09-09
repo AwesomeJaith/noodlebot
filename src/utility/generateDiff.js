@@ -40,23 +40,22 @@ function findLCS(str1, str2) {
 function findChange(string, subsequence) {
   let change = [];
 
-  let i = string.length;
-  let j = subsequence.length;
+  let i = string.length - 1;
+  let j = subsequence.length - 1;
 
-  while (i > 0 && j > 0) {
-    if (string[i] === subsequence[j]) {
-      i--;
+  while (i >= 0) {
+    if (j >= 0 && string[i] === subsequence[j]) {
       j--;
     } else {
       change.push(string[i]);
-      i--;
     }
+    i--;
   }
 
   return change.reverse();
 }
 
-testStr1 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
+testStr1 = `Diggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
 
 testStr2 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later", that's how you get reliant on megapixels`;
 
