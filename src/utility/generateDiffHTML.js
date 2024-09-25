@@ -1,6 +1,6 @@
 import { findDiffIndexes } from "./findDiffIndexes.js";
 
-function generateDiffHTML(str1, str2) {
+export function generateDiffHTML(str1, str2) {
   const diffSets = findDiffIndexes(str1, str2);
   const deletionSet = new Set(diffSets["deletions"]);
   const insertionSet = new Set(diffSets["insertions"]);
@@ -199,7 +199,7 @@ function generateDiffHTML(str1, str2) {
         color: #ae2121;
     }
    `;
-  const htmlBody = `
+  const htmlContent = `
     <!DOCTYPE html>
     <html>
 
@@ -235,7 +235,7 @@ function generateDiffHTML(str1, str2) {
 
    </html>`;
 
-  return htmlBody;
+  return htmlContent;
 }
 
 // Find longest consecutive set of numbers later for less <mark> tags later
