@@ -1,4 +1,4 @@
-export function findDiffIndexes(str1, str2) {
+function findDiffIndexes(str1, str2) {
   const subsequence = findLCS(str1, str2);
   const deletions = findChange(str1, subsequence);
   const insertions = findChange(str2, subsequence);
@@ -67,3 +67,7 @@ function findChange(str, subsequence) {
 
 // const diff = findDiffIndexes(testStr1, testStr2);
 // console.log(diff);
+
+module.exports = {
+  findDiffIndexes,
+};

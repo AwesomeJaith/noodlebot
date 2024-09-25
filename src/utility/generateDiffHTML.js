@@ -1,6 +1,6 @@
-import { findDiffIndexes } from "./findDiffIndexes.js";
+const { findDiffIndexes } = require("./findDiffIndexes.js");
 
-export function generateDiffHTML(str1, str2) {
+function generateDiffHTML(str1, str2) {
   const diffSets = findDiffIndexes(str1, str2);
   const deletionSet = new Set(diffSets["deletions"]);
   const insertionSet = new Set(diffSets["insertions"]);
@@ -404,3 +404,7 @@ function generateDiffBodyHTML(deletionHTML, insertionHTML) {
 // const testStr2 = `While it’s true that most content creators might be officers, I wouldn’t want to limit the application to just that group. The grandfathering issue won’t be a concern since we can have users in place to manage and remove content creators when necessary. Additionally, implementing an audit log is standard practice with APIs, so we’ll ensure that’s integrated into the backend.`;
 
 // console.log(generateDiffHTML(testStr1, testStr2));
+
+module.exports = {
+  generateDiffHTML,
+};

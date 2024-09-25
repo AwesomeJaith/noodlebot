@@ -1,10 +1,6 @@
-import puppeteer from "puppeteer";
+const puppeteer = require("puppeteer");
 
-export async function captureHTMLFile(
-  htmlString,
-  containerSelector,
-  outputPath
-) {
+async function captureHTMLFile(htmlString, containerSelector, outputPath) {
   const browser = await puppeteer.launch({ headless: "shell" });
   const page = await browser.newPage();
 
@@ -58,3 +54,7 @@ export async function captureHTMLFile(
 // `;
 
 // captureHTMLFile(htmlString, "div.container", "test_page.png");
+
+module.exports = {
+  captureHTMLFile,
+};
