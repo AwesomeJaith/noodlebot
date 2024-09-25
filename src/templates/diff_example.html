@@ -93,11 +93,11 @@
             gap: 8px;
         }
 
-        #first.diff-body-text {
+        .first {
             margin-top: 14px;
         }
 
-        #last.diff-body-text {
+        .last {
             margin-bottom: 14px;
         }
 
@@ -195,48 +195,57 @@
         <div class="diff-body-container">
             <div class="diff-body">
                 <div class="diff-body-before">
-                    <div class="diff-body-text removal" id="first">
-                        <div class="line-number">
-                            1
-                        </div> <!-- dynamically generated -->
-                        <div>
-                            I can make stuff blink and <mark class="deletion">need</mark> with arduino.
-                        </div> <!-- dynamically generated -->
+                    <div class="diff-body-text removal first">
+                        <div class="line-number">1</div>
+                        <div>I can make stuff blink and <mark class="deletion">n</mark>ee<mark class="deletion">d</mark>
+                            with arduino.
+                        </div>
                     </div>
                     <div class="diff-body-text">
-                        <div class="line-number">
-                            2
-                        </div> <!-- dynamically generated -->
-                        <div>
-                            I can make stuff blink and <mark class="deletion">need</mark> with arduino. I can make stuff
-                            blink and <mark class="deletion">need</mark> with arduino.
-                        </div> <!-- dynamically generated -->
+                        <div class="line-number">2</div>
+                        <div>I can make stuff
+                        </div>
                     </div>
-                    <div class="diff-body-text" id="last">
-                        <div class="line-number">
-
-                        </div> <!-- dynamically generated -->
-                        <div>
-                            I can make stuff blink and <mark class="deletion">need</mark> with arduino.
-                        </div> <!-- dynamically generated -->
+                    <div class="diff-body-text">
+                        <div class="line-number">3</div>
+                        <div>I can make stuff
+                        </div>
+                    </div>
+                    <div class="diff-body-text">
+                        <div class="line-number">4</div>
+                        <div>I can make stuff
+                        </div>
+                    </div>
+                    <div class="diff-body-text last">
+                        <div class="line-number">5</div>
+                        <div>I can make stuff</div>
                     </div>
                 </div>
                 <div class="diff-body-after">
-                    <div class="diff-body-text addition" id="first">
-                        <div class="line-number">
-                            1
-                        </div> <!-- dynamically generated -->
-                        <div>
-                            I can make stuff blink and <mark class="insertion">beep</mark> with arduino.
-                        </div> <!-- dynamically generated -->
+                    <div class="diff-body-text addition first">
+                        <div class="line-number">1</div>
+                        <div>I can make stuff blink and <mark class="insertion">b</mark>ee<mark
+                                class="insertion">p</mark> with arduino.
+                        </div>
                     </div>
-                    <div class="diff-body-text" id="last">
-                        <div class="line-number">
-                            2
-                        </div> <!-- dynamically generated -->
-                        <div>
-                            I can make stuff blink and <mark class="insertion">beep</mark> with arduino.
-                        </div> <!-- dynamically generated -->
+                    <div class="diff-body-text">
+                        <div class="line-number">2</div>
+                        <div>I can make stuff
+                        </div>
+                    </div>
+                    <div class="diff-body-text">
+                        <div class="line-number">3</div>
+                        <div>I can make stuff
+                        </div>
+                    </div>
+                    <div class="diff-body-text">
+                        <div class="line-number">4</div>
+                        <div>I can make stuff
+                        </div>
+                    </div>
+                    <div class="diff-body-text last">
+                        <div class="line-number">5</div>
+                        <div>I can make stuff</div>
                     </div>
                 </div>
             </div>

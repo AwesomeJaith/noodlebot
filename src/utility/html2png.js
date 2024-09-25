@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const path = require("path");
 
-async function captureHTMLFile(containerSelector, outputPath) {
+export async function captureHTMLFile(HTMLFile, containerSelector, outputPath) {
   const browser = await puppeteer.launch({ headless: "shell" });
   const page = await browser.newPage();
 
@@ -9,7 +9,7 @@ async function captureHTMLFile(containerSelector, outputPath) {
   await page.setViewport({ width: 1024, height: 0 });
 
   // Get the file URL for the HTML file in the same directory
-  const filePath = `file:${path.join(__dirname, "diff_example.html")}`;
+  const filePath = `file:${path.join(__dirname, HTMLFile)}`;
 
   // Load the HTML file
   await page.goto(filePath);
@@ -41,4 +41,4 @@ async function captureHTMLFile(containerSelector, outputPath) {
 }
 
 // Example usage
-//captureHTMLFile("div.container", "test_page.png");
+//captureHTMLFile("diff_example.html", "div.container", "test_page.png");

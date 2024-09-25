@@ -1,7 +1,7 @@
-function generateDiff(str1, str2) {
+export function findDiffIndexes(str1, str2) {
   const subsequence = findLCS(str1, str2);
-  const deletions = findChange(str1, subsequence, "-");
-  const insertions = findChange(str2, subsequence, "+");
+  const deletions = findChange(str1, subsequence);
+  const insertions = findChange(str2, subsequence);
 
   return { deletions: deletions, insertions: insertions };
 }
@@ -43,28 +43,27 @@ function findLCS(str1, str2) {
   return str.reverse();
 }
 
-function findChange(str, subsequence, symbol = "±") {
-  let change = [];
+function findChange(str, subsequence) {
+  let indexes = new Set();
 
   let i = str.length - 1;
   let j = subsequence.length - 1;
 
   while (i >= 0) {
     if (j >= 0 && str[i] === subsequence[j]) {
-      change.push(str[i]);
       j--;
     } else {
-      change.push(symbol + str[i]);
+      indexes.add(i);
     }
     i--;
   }
 
-  return change.reverse();
+  return indexes;
 }
 
 // Test strings
-testStr1 = `Diggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
-testStr2 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later", that's how you get reliant on megapixels`;
+// const testStr1 = `Diggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later"`;
+// const testStr2 = `Biggest thing I tried to do my best at was shoot for the shot, don't shoot for the edit. You should ideally never be saying "I can fix it in Lightroom" or "I can just crop it later", that's how you get reliant on megapixels`;
 
-const diff = generateDiff(testStr1, testStr2);
-console.log(diff);
+// const diff = findDiffIndexes(testStr1, testStr2);
+// console.log(diff);
