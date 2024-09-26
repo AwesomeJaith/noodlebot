@@ -13,14 +13,17 @@ if (!fsSync.existsSync(imagesDir)) {
   fsSync.mkdirSync(imagesDir);
 }
 
-const bodyParser = require("body-parser");
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
-app.get("/difference/:before/:after", async (req, res) => {
+app.post("/difference", async (req, res) => {
   try {
-    const beforeText = req.params.before;
-    const afterText = req.params.after;
+    const { beforeText, afterText } = req.body;
+
+    if (typeof beforeText !== "string" || typeof afterText !== "string") {
+      return res
+        .status(400)
+        .send({ message: "Invalid input format. Expected strings." });
+    }
 
     const html = generateDiffHTML(beforeText, afterText);
 
@@ -40,11 +43,9 @@ app.get("/difference/:before/:after", async (req, res) => {
 
     await captureHTMLFile(html, "div.container", `${imagePath}`);
 
-    const imageData = await fs.readFile(imagePath);
-
     res.json({
       imageId: fileName,
-      imageData: `http://localhost:3000/images/${fileName}`,
+      imageUrl: `http://localhost:3000/images/${fileName}`,
     });
   } catch (err) {
     console.error("Error:", err);
