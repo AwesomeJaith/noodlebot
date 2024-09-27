@@ -1,0 +1,37 @@
+services:
+  api:
+    build:
+      context: ./noodlebot-api
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    networks:
+      - noodlebot-network
+    restart: unless-stopped
+
+  discord-bot:
+    build: 
+      context: ./noodlebot-discord
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - APP_ID=${APP_ID}
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - PUBLIC_KEY=${PUBLIC_KEY}
+      - CLIENT_ID=${CLIENT_ID}
+      - GUILD_ID=${GUILD_ID}
+    ports:
+      - "${DISCORD_BOT_PORT}:${DISCORD_BOT_PORT}"
+    networks:
+      - noodlebot-network
+    restart: unless-stopped
+    depends_on:
+      - api
+
+networks:
+  noodlebot-network:
+    driver: bridge
