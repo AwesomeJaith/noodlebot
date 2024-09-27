@@ -1,5 +1,11 @@
 const { Events, EmbedBuilder, AttachmentBuilder } = require("discord.js");
 const axios = require("axios");
+const dotenv = require("dotenv");
+const path = require("path");
+
+dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
+const api_port = process.env.API_PORT;
+console.log(api_port);
 
 module.exports = {
   name: Events.MessageUpdate,
@@ -20,7 +26,7 @@ module.exports = {
         afterText: message2,
       };
 
-      const url = `http://localhost:3000/difference`;
+      const url = `http://api:${api_port}/difference`;
       const response = await axios.post(url, data);
 
       const { imageId, imageUrl } = response.data;
@@ -58,7 +64,7 @@ module.exports = {
         await newMessage.guild.channels.fetch(diffLogChannelId);
       await diffLogChannel.send({ embeds: [diffEmbed] });
 
-      const deleteUrl = `http://localhost:3000/images/${imageId}`;
+      const deleteUrl = `http://api:${api_port}/images/${imageId}`;
       await axios.delete(deleteUrl);
     } catch (error) {
       console.error("Error sending image or creating embed:", error);

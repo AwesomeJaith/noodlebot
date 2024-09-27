@@ -63,7 +63,7 @@ function generateDiffHTML(str1, str2) {
    `;
   const stylesheet = `
     * {
-        font-family: Arial, Courier, monospace;
+        font-family: Arial, 'Liberation Sans', monospace;
     }
 
     html {

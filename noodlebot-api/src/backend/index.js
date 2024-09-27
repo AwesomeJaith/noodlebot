@@ -4,7 +4,11 @@ const { captureHTMLFile } = require("../utility/html2png.js");
 const express = require("express");
 const fs = require("fs").promises;
 const fsSync = require("fs");
+const dotenv = require("dotenv");
 const path = require("path");
+
+dotenv.config({ path: path.resolve(__dirname, "../../../../.env") });
+const api_port = process.env.API_PORT;
 
 const app = express();
 
@@ -45,7 +49,7 @@ app.post("/difference", async (req, res) => {
 
     res.json({
       imageId: fileName,
-      imageUrl: `http://localhost:3000/images/${fileName}`,
+      imageUrl: `http://api:${api_port}/images/${fileName}`,
     });
   } catch (err) {
     console.error("Error:", err);
@@ -76,7 +80,7 @@ app.delete("/images/:imageId", async (req, res) => {
 
 app.use("/images", express.static(imagesDir));
 
-const server = app.listen(3000, function () {
+const server = app.listen(api_port, function () {
   let host = server.address().address;
   let port = server.address().port;
 });
