@@ -24,6 +24,8 @@ services:
       - PUBLIC_KEY=${PUBLIC_KEY}
       - CLIENT_ID=${CLIENT_ID}
       - GUILD_ID=${GUILD_ID}
+      - DUMP_CHANNEL_ID=${DUMP_CHANNEL_ID}
+      - DIFF_LOG_CHANNEL_ID=${DIFF_LOG_CHANNEL_ID}
     ports:
       - "${DISCORD_BOT_PORT}:${DISCORD_BOT_PORT}"
     networks:

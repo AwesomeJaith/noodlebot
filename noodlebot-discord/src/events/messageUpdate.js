@@ -5,14 +5,13 @@ const path = require("path");
 
 dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
 const api_port = process.env.API_PORT;
+const dumpChannelId = process.env.DUMP_CHANNEL_ID;
+const diffLogChannelId = process.env.DIFF_LOG_CHANNEL_ID;
 console.log(api_port);
 
 module.exports = {
   name: Events.MessageUpdate,
   async execute(oldMessage, newMessage) {
-    const dumpChannelId = "1288746613203931137";
-    const diffLogChannelId = "1288702256895623211";
-
     if (oldMessage.author.bot || oldMessage.content === newMessage.content) {
       return;
     }
