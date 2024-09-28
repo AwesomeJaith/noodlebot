@@ -1,6 +1,6 @@
 const { REST, Routes } = require("discord.js");
-// const { clientId, discordToken } = require("../config.json");
-require('dotenv').config();
+
+require("dotenv").config();
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -40,9 +40,12 @@ const rest = new REST().setToken(process.env.DISCORD_TOKEN);
     );
 
     // The put method is used to fully refresh all commands in the guild with the current set
-    const data = await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), {
-      body: commands,
-    });
+    const data = await rest.put(
+      Routes.applicationCommands(process.env.APP_ID),
+      {
+        body: commands,
+      }
+    );
 
     console.log(
       `Successfully reloaded ${data.length} application (/) commands.`
